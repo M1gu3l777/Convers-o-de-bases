@@ -1,0 +1,70 @@
+
+{% extends "base.html" %}
+
+{% block title %}Início | BaseCerta{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">REDES DE COMPUTADORES I</span>
+
+    <h1>Entenda e converta
+        <span>números entre bases</span>
+    </h1>
+
+    <p>
+        Explore os sistemas numéricos usados na computação e
+        converta valores de forma rápida e clara.
+    </p>
+
+    <a class="button-link"
+       href="{{ url_for('pagina_converter') }}">
+        Abrir conversor
+    </a>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <span class="eyebrow">CONCEITOS ESSENCIAIS</span>
+        <h2>Quatro sistemas numéricos</h2>
+        <p>Cada sistema utiliza uma base diferente.</p>
+    </div>
+
+    <div class="cards-grid">
+        <article class="info-card">
+            <div class="base-number">10</div>
+            <h3>Decimal</h3>
+            <p>
+                Usa os algarismos de 0 a 9 e é o sistema
+                numérico mais utilizado no cotidiano.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="base-number">2</div>
+            <h3>Binário</h3>
+            <p>
+                Usa apenas 0 e 1. É fundamental para representar
+                informações nos computadores.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="base-number">16</div>
+            <h3>Hexadecimal</h3>
+            <p>
+                Usa os algarismos de 0 a 9 e as letras de A a F.
+                É utilizado em cores e endereços.
+            </p>
+        </article>
+
+        <article class="info-card">
+            <div class="base-number">8</div>
+            <h3>Octal</h3>
+            <p>
+                Usa os algarismos de 0 a 7 e permite representar
+                valores binários de forma compacta.
+            </p>
+        </article>
+    </div>
+</section>
+{% endblock %}

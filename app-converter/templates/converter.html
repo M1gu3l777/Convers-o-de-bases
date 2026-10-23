@@ -1,0 +1,126 @@
+
+{% extends "base.html" %}
+
+{% block title %}Conversor | BaseCerta{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">FERRAMENTA</span>
+    <h1>Conversor de bases</h1>
+    <p>
+        Digite um número e selecione as bases de origem e destino.
+    </p>
+</section>
+
+<section class="converter-panel">
+    <form action="{{ url_for('pagina_converter') }}"
+          method="POST" class="converter-form">
+
+        <div class="field">
+            <label for="numero">Número para converter</label>
+            <input
+                type="text"
+                id="numero"
+                name="numero"
+                value="{{ numero_digitado|default('') }}"
+                placeholder="Ex.: 255, 11111111 ou FF"
+                required
+                autocomplete="off">
+        </div>
+
+        <div class="fields-row">
+            <div class="field">
+                <label for="origem">Base de origem</label>
+                <select id="origem" name="origem" required>
+                    <option value="10"
+                        {% if origem_selecionada|default('10') == '10' %}selected{% endif %}>
+                        Decimal (10)
+                    </option>
+                    <option value="2"
+                        {% if origem_selecionada|default('10') == '2' %}selected{% endif %}>
+                        Binário (2)
+                    </option>
+                    <option value="16"
+                        {% if origem_selecionada|default('10') == '16' %}selected{% endif %}>
+                        Hexadecimal (16)
+                    </option>
+                    <option value="8"
+                        {% if origem_selecionada|default('10') == '8' %}selected{% endif %}>
+                        Octal (8)
+                    </option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="destino">Base de destino</label>
+                <select id="destino" name="destino" required>
+                    <option value="2"
+                        {% if destino_selecionado|default('2') == '2' %}selected{% endif %}>
+                        Binário (2)
+                    </option>
+                    <option value="10"
+                        {% if destino_selecionado|default('2') == '10' %}selected{% endif %}>
+                        Decimal (10)
+                    </option>
+                    <option value="16"
+                        {% if destino_selecionado|default('2') == '16' %}selected{% endif %}>
+                        Hexadecimal (16)
+                    </option>
+                    <option value="8"
+                        {% if destino_selecionado|default('2') == '8' %}selected{% endif %}>
+                        Octal (8)
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <button class="button-primary" type="submit">
+            Converter número
+        </button>
+    </form>
+
+    {% if erro %}
+        <div class="error-message" role="alert">
+            {{ erro }}
+        </div>
+    {% endif %}
+</section>
+
+{% if resultado is defined and resultado is not none %}
+<div class="modal-fundo" id="modalResultado">
+    <section class="modal"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="tituloResultado">
+
+    
+
+        <span class="eyebrow success-label">
+            CONVERSÃO CONCLUÍDA
+        </span>
+
+        <h2 id="tituloResultado">Resultado da conversão</h2>
+
+        <p class="expressao">
+            {{ numero_original }} ({{ base_origem }})
+        </p>
+
+        <div class="resultado" aria-live="polite">
+            {{ resultado }}
+        </div>
+
+        <p class="detalhe">
+            Base de destino:
+            <strong>{{ base_destino }}</strong>
+        </p>
+
+        <button
+            class="button-primary"
+            type="button"
+            onclick="document.getElementById('modalResultado').style.display='none'">
+            Entendi
+        </button>
+    </section>
+</div>
+{% endif %}
+{% endblock %}

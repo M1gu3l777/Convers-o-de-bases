@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Conversor de Bases{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-inner">
+            <a class="brand" href="{{ url_for('inicio') }}">BaseCerta</a>
+
+            <nav aria-label="Navegação principal">
+                <a href="{{ url_for('inicio') }}">Início</a>
+                <a href="{{ url_for('pagina_converter') }}">Conversor</a>
+                <a href="{{ url_for('integrantes') }}">Integrantes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Projeto acadêmico — Conversor de Bases Numéricas</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>
