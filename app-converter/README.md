@@ -66,7 +66,3 @@ Os métodos de conversão são implementados no arquivo
 `conversoes.py`, sem utilizar as funções prontas `bin()`,
 `hex()` e `oct()`.
 
-## Integrantes
-
-Preencha esta seção com os nomes reais dos integrantes
-e as respectivas contribuições.
